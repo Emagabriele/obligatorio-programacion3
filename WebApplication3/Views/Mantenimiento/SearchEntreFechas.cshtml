@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Fechas";
+}
+
+<h1>Fechas</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetAllEntreFechas" method="get">
+            <div class="form-group">
+                <input name="nombreCabaña" value="@ViewBag.nombreCabaña" type="hidden" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fecha 1:</label>
+                <input name="f1" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fecha 2:</label>
+                <input name="f2" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

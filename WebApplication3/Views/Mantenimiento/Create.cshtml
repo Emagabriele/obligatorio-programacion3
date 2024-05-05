@@ -1,0 +1,84 @@
+﻿@model Dominio.Entidades.Mantenimiento
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+@if(ViewBag.cabaña != null){
+<div>
+    <h4>Datos Cabaña</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.cabaña.Nombre
+        </dd>
+        <dt class="col-sm-2">
+            Descripcion
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.cabaña.Descripcion.Descripcion
+        </dd>
+        <dt class="col-sm-2">
+            Numero Habitacion
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.cabaña.NumHabitacion
+        </dd>
+        <dt class="col-sm-2">
+            Capacidad
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.cabaña.Capacidad.CapacidadCabaña
+        </dd>
+        <dt class="col-sm-2">
+            Foto
+        </dt>
+        <dd class="col-sm-10">
+            <img width="50" class="img-thumbnail" src="~/Imagenes/Fotos/@ViewBag.cabaña.Foto"/>
+        </dd>
+    </dl>
+</div>
+
+<h4>Registrar Mantenimiento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha"  type="date" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Costo" class="control-label"></label>
+                <input asp-for="Costo" class="form-control" />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trabajador.Nombre" class="control-label"></label>
+                <input asp-for="Trabajador.Nombre" class="form-control" />
+                <span asp-validation-for="Trabajador.Nombre" class="text-danger"></span>
+            </div
+            <div class="form-group">
+                <input asp-for="NombreCabaña" value="@ViewBag.cabaña.Nombre" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+}
+@ViewBag.msg
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

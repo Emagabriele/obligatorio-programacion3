@@ -1,0 +1,64 @@
+﻿@model Dominio.Entidades.Cabania
+
+@{
+    ViewData["Title"] = "Create";
+}
+@if (ViewBag.Tipos != null)
+{
+
+<h1>Create</h1>
+
+<div class="col-md-4">
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Descripcion.Descripcion" class="control-label"></label>
+            <input asp-for="Descripcion.Descripcion" class="form-control" />
+            <span asp-validation-for="Descripcion.Descripcion" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="JacuzziPrivado.JacuzziPrivado" /> @Html.DisplayNameFor(model => model.JacuzziPrivado.JacuzziPrivado)
+            </label>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Habilitada" /> @Html.DisplayNameFor(model => model.Habilitada)
+            </label>
+        </div>
+        <div class="form-group">
+            <label asp-for="Capacidad.CapacidadCabaña" class="control-label"></label>
+            <input asp-for="Capacidad.CapacidadCabaña" class="form-control" />
+            <span asp-validation-for="Capacidad.CapacidadCabaña" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NombreTipo" class="control-label">Tipos</label>
+            <select asp-for="NombreTipo" class="form-control">
+                <option value="s">Seleccione opción</option>
+                @foreach (var item in ViewBag.Tipos)
+                {
+                    <option value="@item.Nombre">@item.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imagen" class="control-label"></label>
+            <input type="file" accept="image/png, image/jpg, image/jpeg" name="imagen" class="form-control" />
+            <span asp-validation="imagen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+}
+@ViewBag.msg
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

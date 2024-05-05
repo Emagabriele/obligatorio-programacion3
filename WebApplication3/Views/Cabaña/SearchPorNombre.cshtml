@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Dominio.Entidades.Cabania>
+
+@{
+    ViewData["Title"] = "SearchPorNombre";
+}
+
+<h1>Cabañas (Por Nombre)</h1>
+
+@if (Model != null) { 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JacuzziPrivado.JacuzziPrivado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model._unTipo.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model._unTipo.Costo_huesped)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JacuzziPrivado.JacuzziPrivado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._unTipo.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._unTipo.Costo_huesped)
+            </td>
+            <td>
+                <img width="100" class="img-thumbnail" src="~/Imagenes/Fotos/@item.Foto" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}
+@ViewBag.msg
